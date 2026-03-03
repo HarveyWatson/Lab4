@@ -1,8 +1,11 @@
 function var_dot = QuadrotorEOM(t, var, g, m, I, d, km, nu, mu, motor_forces)
 
-Ix = I(1,1);
-Iy = I(2,2);
-Iz = I(3,3);
+I_principles = diag(I);
+Ix = I_principles(1);
+Iy = I_principles(2);
+Iz = I_principles(3);
+
+var_dot = zeros(12, 1);
 
 x_E = var(1);
 y_E = var(2);
@@ -46,7 +49,21 @@ var_dot_O = A2*[p, q, r]';
 var_dot_UVW = A3 + g*A4 + (1/m)*[0,0,Z_C]';
 var_dot_PQR = A5 + [(1/Ix)*L_C, (1/Iy)*M_C, (1/Iz)*N_C]';
 
-var_dot = [var_dot_XYZ, var_dot_O, var_dot_UVW, var_dot_PQR]';
+var_dot(1) = var_dot_XYZ(1);
+var_dot(2) = var_dot_XYZ(2);
+var_dot(3) = var_dot_XYZ(3);
+
+var_dot(4) = var_dot_O(1);
+var_dot(5) = var_dot_O(2);
+var_dot(6) = var_dot_O(3);
+
+var_dot(7) = var_dot_UVW(1);
+var_dot(8) = var_dot_UVW(2);
+var_dot(9) = var_dot_UVW(3);
+
+var_dot(10) = var_dot_PQR(1);
+var_dot(11) = var_dot_PQR(2);
+var_dot(12) = var_dot_PQR(3);
 
 % aerodynamic forces/moments to be added
 end
