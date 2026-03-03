@@ -3,10 +3,6 @@
 % File Name: PlotAircraftSim
 % Created: 3/3/26
 
-
-
-
-
 function PlotAircraftSim(time, aircraft_state_array, control_input_array, fig, col)
 %
 % Inputs: time = time vector of length n
@@ -164,6 +160,7 @@ ylabel('y (m)')
 zlabel('-z (m)')
 title('Aircraft Path')
 legend('path of aircraft','aircraft starting point','aircraft final point')
+
 
 
 end
