@@ -162,5 +162,4 @@ title('Aircraft Path')
 legend('path of aircraft','aircraft starting point','aircraft final point')
 
 
-
 end
