@@ -152,9 +152,9 @@ sgtitle('Control Inputs over Time');
 n = length(time);
 figure(fig(6));
 hold on;
-plot(aircraft_state_array(1,:),aircraft_state_array(2,:),-1.*aircraft_state_array(3,:),col);
-plot(aircraft_state_array(1,1),aircraft_state_array(2,1),-1.*aircraft_state_array(3,1),'gx');
-plot(aircraft_state_array(1,n),aircraft_state_array(2,n),-1.*aircraft_state_array(3,n),'rx');
+plot3(aircraft_state_array(1,:),aircraft_state_array(2,:),-1.*aircraft_state_array(3,:),col);
+plot3(aircraft_state_array(1,1),aircraft_state_array(2,1),-1.*aircraft_state_array(3,1),'gx');
+plot3(aircraft_state_array(1,n),aircraft_state_array(2,n),-1.*aircraft_state_array(3,n),'rx');
 xlabel('x (m)')
 ylabel('y (m)')
 zlabel('-z (m)')
@@ -163,3 +163,4 @@ legend('path of aircraft','aircraft starting point','aircraft final point')
 
 
 end
+
