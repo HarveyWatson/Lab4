@@ -44,10 +44,17 @@ L_C = (d/sqrt(2))*(-f1 -f2 +f3 +f4);
 M_C = (d/sqrt(2))*(f1 -f2 -f3 +f4);
 N_C = (km)*(f1 -f2 +f3 -f4);
 
+% drag + moments, assuming 0 wind
+Va_vec = [u_E, v_E, w_E]';
+Drag = -nu*norm(Va_vec)*Va_vec;
+
+omega_vec = [p, q, r]';
+Moments = -mu*norm(omega_vec)*omega_vec;
+
 var_dot_XYZ = A1*[u_E, v_E, w_E]';
 var_dot_O = A2*[p, q, r]';
-var_dot_UVW = A3 + g*A4 + (1/m)*[0,0,Z_C]';
-var_dot_PQR = A5 + [(1/Ix)*L_C, (1/Iy)*M_C, (1/Iz)*N_C]';
+var_dot_UVW = A3 + g*A4 + (1/m)*[0,0,Z_C]' + (1/m)*Drag; % with aero drag
+var_dot_PQR = A5 + [(1/Ix)*L_C, (1/Iy)*M_C, (1/Iz)*N_C]' + [(1/Ix)*Moments(1), (1/Iy)*Moments(2), (1/Iz)*Moments(3)]'; % with aero moment
 
 var_dot(1) = var_dot_XYZ(1);
 var_dot(2) = var_dot_XYZ(2);
