@@ -62,12 +62,12 @@ for i=1:6
 [tnon1, varnon1] = ode45(@(tnon1,varnon1) QuadrotorEOM(tnon1, varnon1, g, m, Imat, d, km, nu, mu, motor_forces),[0,10],var1i);
 controlforcesnon1 = zeros(4,length(tnon1));
 controlforcesnon1(1,:) = -m*g;
-PlotAircraftSim(tnon1, varnon1', controlforcesnon1, [1;2;3;4;5;6]+6*(i-1), 'b-',"2.1")
+PlotAircraftSim(tnon1, varnon1', controlforcesnon1, [1;2;3;4;5;6]+6*(i-1), 'b-')
 
 [t1,var1] = ode45(@(t1,var1) QuadrotorEOM_linearized(t1, var1, g, m, Imat, deltaFc, deltaGc), [0,10], var1i);
 controlforces1 = zeros(4,length(t1));
 controlforces1(1,:) = -m*g;
-PlotAircraftSim(t1, var1', controlforces1 , [1;2;3;4;5;6]+6*(i-1), 'm--',"2.2")
+PlotAircraftSim(t1, var1', controlforces1 , [1;2;3;4;5;6]+6*(i-1), 'm--')
 
 end
  
@@ -122,6 +122,7 @@ function [Fc, Gc] = RotationDerivativeFeedback(var, m, g)
 Fc = [0; 0; m*g];
 Gc = .0004.*[var(10);var(11);var(12)];
 end
+
 
 
 
