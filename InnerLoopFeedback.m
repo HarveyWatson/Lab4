@@ -5,10 +5,10 @@
 
 function [Fc, Gc] = InnerLoopFeedback(var)
 % placeholders for gain values below
-k1_latroll = 3.481*10^-4;
+k1_latroll = 3.292*10^-4;
 k2_latroll = 2.594*10^-4;
 
-k1_longpitch = 4.321*10^-4;
+k1_longpitch = 4.087*10^-4;
 k2_longpitch = 3.22*10^-4;
 
 % lat roll
